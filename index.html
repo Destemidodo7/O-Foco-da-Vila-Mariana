@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Foco da Vila Mariana e Região</title>
+    <style>
+        /* ===== VARIÁVEIS CSS PARA TEMAS ===== */
+        :root {
+            /* Tema Claro */
+            --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.9);
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --accent-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --border-color: rgba(148, 163, 184, 0.3);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Tema Escuro */
+        [data-theme="dark"] {
+            --bg-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --bg-secondary: rgba(15, 23, 42, 0.9);
+            --bg-card: rgba(30, 41, 59, 0.95);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --accent-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --border-color: rgba(71, 85, 105, 0.3);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== RESET E BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== CABEÇALHO FIXO ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: var(--bg-card);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            background: var(--accent-primary);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        .main-content {
+            margin-top: 100px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        /* ===== SEÇÃO DE NOTÍCIAS ===== */
+        .news-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .news-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            background: var(--accent-secondary);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .news-summary {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .news-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ===== SIDEBAR COM ANÚNCIOS ===== */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .ads-section {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .ads-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ad-banner {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .ad-banner:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: var(--accent-primary);
+        }
+
+        .ad-text {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ===== RODAPÉ ===== */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: 2rem;
+                margin-top: 140px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                font-size: 0.875rem;
+            }
+
+            .nav-link {
+                padding: 0.25rem 0.5rem;
+            }
+
+            .theme-toggle {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* ===== ANIMAÇÕES AVANÇADAS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200px 0;
+            }
+            100% {
+                background-position: calc(200px + 100%) 0;
+            }
+        }
+
+        .news-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .ad-banner {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .loading-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 200px 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Efeito de hover melhorado */
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .news-card:hover::before {
+            opacity: 1;
+        }
+
+        .news-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito parallax sutil no header */
+        .header {
+            background-attachment: fixed;
+        }
+
+        /* Animação de entrada para elementos */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efeito de typing para o título principal */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .typing-effect {
+            overflow: hidden;
+            border-right: 2px solid;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+        }
+
+        /* ===== LINKS AUTOMÁTICOS ===== */
+        .auto-link {
+            color: #3b82f6;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .auto-link:hover {
+            color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO FIXO -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">O Foco da Vila Mariana</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#noticias" class="nav-link">Notícias</a></li>
+                    <li><a href="#esportes" class="nav-link">Esportes</a></li>
+                    <li><a href="#cultura" class="nav-link">Cultura</a></li>
+                    <li><a href="#comerciantes" class="nav-link">Comerciantes</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()">🌙 Tema</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        <!-- SEÇÃO DE NOTÍCIAS -->
+        <section class="news-section" id="noticias">
+            <h1 class="section-title">Últimas Notícias</h1>
+            <div class="news-grid" id="newsContainer">
+                <!-- Notícias serão carregadas dinamicamente via JavaScript -->
+            </div>
+        </section>
+
+        <!-- SIDEBAR COM ANÚNCIOS -->
+        <aside class="sidebar">
+            <div class="ads-section" id="comerciantes">
+                <h2 class="ads-title">Comerciantes da Região</h2>
+                <div id="adsContainer">
+                    <!-- Anúncios serão carregados dinamicamente via JavaScript -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h3 class="footer-title">O Foco da Vila Mariana e Região</h3>
+            <div class="social-links">
+                <a href="#" class="social-link">FB</a>
+                <a href="#" class="social-link">IG</a>
+                <a href="#" class="social-link">TW</a>
+                <a href="#" class="social-link">WA</a>
+            </div>
+            <p class="footer-text">
+                © 2024 O Foco da Vila Mariana e Região. Todos os direitos reservados.<br>
+                Informando a comunidade da Vila Mariana, Aclimação e Vila Monumento.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DADOS DE EXEMPLO =====
+        
+        // Array de notícias (fácil de editar)
+        const newsData = [
+                {
+                id: 1,
+                title: "Luiz Do AutoZapp - A automação que sua empresa precisa",
+                summary: "Deixe seu whatsapp vendendo no automatico ou crie seu site com Luiz do AutoZapp https://luizdoautozapp.com.br",
+                image: "logoluizdoautozapp.jpg",
+                date: "Sua Empresa Precisa de Automação com o Melhor Preço, Precisa do Luiz Do AutoZapp"
+            }, 
+            {
+                id: 2,
+                title: "E.E. Oscar Thompson: Educação e Gestão de Excelência no Coração do Cambuci",
+                summary: "A Escola Estadual Oscar Thompson, situada no tradicional bairro do Cambuci, é referência em educação de qualidade e compromisso com a formação cidadã. Sob a liderança dedicada de sua diretoria, a escola mantém um ambiente organizado, acolhedor e motivador para alunos e professores. Com uma equipe pedagógica comprometida, projetos culturais e esportivos que enriquecem o aprendizado e o apoio constante da comunidade, a E.E. Oscar Thompson se consolida como um verdadeiro orgulho do bairro e exemplo de gestão no ensino público paulista.",
+                image: "OscarThompson.webp",
+                date: "09 de Agosto de 2025"
+            },
+            {
+                id: 3,
+                title: "🚍 Novidade no transporte: Linha 407M/10 volta a operar aos domingos e feriados na Vila Monumento",
+                summary: "A partir do dia 10 de novembro, os moradores da Vila Monumento terão um reforço no transporte público: a linha 407M/10 (Vila Monumento – Metrô Vila Mariana) voltará a circular aos domingos e feriados, com mais partidas programadas para garantir mais conforto e agilidade aos passageiros. A medida visa melhorar a oferta de viagens na região e funcionará em conjunto com a linha 4115/10 (Shopping Plaza Sul – Praça da República), que assume o itinerário da antiga 4111/10 (Vila Monumento – Praça da República) nesses dias. Como ambas compartilham o mesmo trajeto, a integração será simples e eficiente. 🔁 Integração facilitada: Quem deseja seguir em direção ao centro da cidade poderá embarcar na linha 407M/10 até a Rua Cláudio Rossi, 772, e de lá fazer a conexão com a linha 4115/10. Essa solução foi pensada para manter a fluidez do transporte e atender, com mais eficiência, os cerca de 614 passageiros que utilizam a linha aos domingos — uma média de 17 usuários por viagem. Com a mudança, a SPTrans reforça seu compromisso em manter um transporte mais acessível, funcional e adequado à demanda da população, inclusive nos finais de semana e feriados.",
+                image: "407m.webp",
+                date: "Fonte Prefeitura de SP, 03 de Novembro de 2019"
+            },
+            {
+                id: 4,
+                title: "Revitalização da Praça da Aclimação Será Concluída em Março",
+                summary: "As obras de revitalização da histórica Praça da Aclimação estão em fase final e devem ser concluídas até março. O projeto inclui nova iluminação LED, playground renovado e área de exercícios para a terceira idade. Investimento total de R$ 1,8 milhão.",
+                image: "https://via.placeholder.com/400x200/f59e0b/ffffff?text=Praça+Aclimação",
+                date: "8 de Janeiro, 2024"
+            }
+        ];
+
+        // Array de anúncios (fácil de editar)
+        const adsData = [
+            {
+                id: 1,
+                title: "Padaria do João - Vila Mariana",
+                text: "Pães frescos todos os dias! Venha conhecer nossa padaria tradicional.",
+                image: "https://via.placeholder.com/280x120/ef4444/ffffff?text=Padaria+do+João",
+                link: "https://padariajao.com.br"
+            },
+            {
+                id: 2,
+                title: "Farmácia Saúde Total",
+                text: "Medicamentos e produtos de saúde com os melhores preços da região.",
+                image: "https://via.placeholder.com/280x120/10b981/ffffff?text=Farmácia+Saúde",
+                link: "https://farmaciasaudetotal.com.br"
+            },
+            {
+                id: 3,
+                title: "Restaurante Sabor da Vila",
+                text: "Comida caseira e ambiente aconchegante. Almoço executivo por R$ 18,90.",
+                image: "https://sabordavila.com.br",
+                link: "https://sabordavila.com.br"
+            },
+            {
+                id: 4,
+                title: "Sky Pizza",
+                text: "A melhor pizza da região.",
+                image: "logosky.webp",
+                link: "https://skypizza.com.br"
+}
+        ];
+
+        // ===== FUNÇÕES PRINCIPAIS =====
+
+        // Função para alternar tema claro/escuro
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            
+            // Salvar preferência no localStorage
+            localStorage.setItem('theme', newTheme);
+            
+            // Atualizar texto do botão
+            const themeButton = document.querySelector('.theme-toggle');
+            themeButton.textContent = newTheme === 'dark' ? '☀️ Tema' : '🌙 Tema';
+        }
+
+        // Função para converter URLs em links clicáveis
+        function convertUrlsToLinks(text) {
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, '<a href="$1" class="auto-link" target="_blank" rel="noopener noreferrer">$1</a>');
+        }
+
+        // Função para carregar notícias dinamicamente
+        function loadNews() {
+            const newsContainer = document.getElementById('newsContainer');
+            newsContainer.innerHTML = '';
+
+            newsData.forEach((news, index) => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.style.animationDelay = `${index * 0.1}s`;
+                
+                newsCard.innerHTML = `
+                    <img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.style.display='none'">
+                    <div class="news-content">
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-summary">${convertUrlsToLinks(news.summary)}</p>
+                        <span class="news-date">${news.date}</span>
+                    </div>
+                `;
+                
+                newsContainer.appendChild(newsCard);
+            });
+        }
+
+        // Função para carregar anúncios dinamicamente
+        function loadAds() {
+            const adsContainer = document.getElementById('adsContainer');
+            adsContainer.innerHTML = '';
+
+            adsData.forEach(ad => {
+                const adBanner = document.createElement('a');
+                adBanner.className = 'ad-banner';
+                adBanner.href = ad.link;
+                adBanner.target = '_blank';
+                adBanner.rel = 'noopener noreferrer';
+                
+                adBanner.innerHTML = `
+                    <img src="${ad.image}" alt="${ad.title}" class="ad-image" onerror="this.style.display='none'">
+                    <div class="ad-text">${ad.text}</div>
+                `;
+                
+                adsContainer.appendChild(adBanner);
+            });
+        }
+
+        // ===== INICIALIZAÇÃO COMPLETA =====
+        
+        // Carregar tema salvo e inicializar todas as funcionalidades
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            
+            const themeButton = document.querySelector('.theme-toggle');
+            themeButton.textContent = savedTheme === 'dark' ? '☀️ Tema' : '🌙 Tema';
+            
+            // Carregar conteúdo dinâmico
+            loadNews();
+            loadAds();
+            
+            // Inicializar todas as funcionalidades
+            initScrollEffects();
+            initLazyLoading();
+            initParallaxEffect();
+            initSmoothScroll();
+            initSearchSystem();
+            initViewCounter();
+            
+            // Efeito de typing após carregamento
+            setTimeout(initTypingEffect, 500);
+            
+            // Mostrar toast de boas-vindas
+            setTimeout(() => {
+                showToast('Bem-vindo ao O Foco da Vila Mariana!', 'success');
+            }, 1000);
+        });
+
+        // ===== FUNÇÕES MELHORADAS PARA FACILITAR EDIÇÃO =====
+        
+        // Função para adicionar nova notícia com notificação
+        function addNews(title, summary, image, date) {
+            const newId = Math.max(...newsData.map(n => n.id)) + 1;
+            newsData.unshift({
+                id: newId,
+                title: title,
+                summary: summary,
+                image: image || "https://via.placeholder.com/400x200/64748b/ffffff?text=Sem+Imagem",
+                date: date || new Date().toLocaleDateString('pt-BR', { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                })
+            });
+            loadNews();
+            showToast('Nova notícia adicionada com sucesso!', 'success');
+        }
+
+        // Função para remover notícia com notificação
+        function removeNews(id) {
+            const index = newsData.findIndex(news => news.id === id);
+            if (index > -1) {
+                newsData.splice(index, 1);
+                loadNews();
+                showToast('Notícia removida com sucesso!', 'success');
+            } else {
+                showToast('Notícia não encontrada!', 'error');
+            }
+        }
+
+        // Função para adicionar novo anúncio com notificação
+        function addAd(title, text, image, link) {
+            const newId = Math.max(...adsData.map(a => a.id)) + 1;
+            adsData.push({
+                id: newId,
+                title: title,
+                text: text,
+                image: image || "https://via.placeholder.com/280x120/64748b/ffffff?text=Sem+Imagem",
+                link: link || "#"
+            });
+            loadAds();
+            showToast('Novo anúncio adicionado com sucesso!', 'success');
+        }
+
+        // Função para remover anúncio com notificação
+        function removeAd(id) {
+            const index = adsData.findIndex(ad => ad.id === id);
+            if (index > -1) {
+                adsData.splice(index, 1);
+                loadAds();
+                showToast('Anúncio removido com sucesso!', 'success');
+            } else {
+                showToast('Anúncio não encontrado!', 'error');
+            }
+        }
+
+        // Função para editar notícia existente
+        function editNews(id, newTitle, newSummary, newImage, newDate) {
+            const index = newsData.findIndex(news => news.id === id);
+            if (index > -1) {
+                if (newTitle) newsData[index].title = newTitle;
+                if (newSummary) newsData[index].summary = newSummary;
+                if (newImage) newsData[index].image = newImage;
+                if (newDate) newsData[index].date = newDate;
+                loadNews();
+                showToast('Notícia editada com sucesso!', 'success');
+            } else {
+                showToast('Notícia não encontrada!', 'error');
+            }
+        }
+
+        // Função para editar anúncio existente
+        function editAd(id, newTitle, newText, newImage, newLink) {
+            const index = adsData.findIndex(ad => ad.id === id);
+            if (index > -1) {
+                if (newTitle) adsData[index].title = newTitle;
+                if (newText) adsData[index].text = newText;
+                if (newImage) adsData[index].image = newImage;
+                if (newLink) adsData[index].link = newLink;
+                loadAds();
+                showToast('Anúncio editado com sucesso!', 'success');
+            } else {
+                showToast('Anúncio não encontrado!', 'error');
+            }
+        }
+
+        // Função para listar todas as notícias (para facilitar edição)
+        function listNews() {
+            console.table(newsData.map(news => ({
+                ID: news.id,
+                Título: news.title,
+                Data: news.date
+            })));
+            return newsData;
+        }
+
+        // Função para listar todos os anúncios (para facilitar edição)
+        function listAds() {
+            console.table(adsData.map(ad => ({
+                ID: ad.id,
+                Título: ad.title,
+                Link: ad.link
+            })));
+            return adsData;
+        }
+
+        // Função para backup dos dados
+        function backupData() {
+            const backup = {
+                news: newsData,
+                ads: adsData,
+                timestamp: new Date().toISOString()
+            };
+            const dataStr = JSON.stringify(backup, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `backup-foco-vila-mariana-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            showToast('Backup realizado com sucesso!', 'success');
+        }
+
+        // Efeito de scroll no header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'var(--bg-secondary)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = 'var(--shadow-medium)';
+            } else {
+                header.style.background = 'var(--bg-secondary)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = 'var(--shadow-light)';
+            }
+        });
+
+        // ===== EFEITOS DE SCROLL E ANIMAÇÕES =====
+        
+        // Intersection Observer para animações de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Função para adicionar efeitos de scroll
+        function initScrollEffects() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        }
+
+        // Lazy loading para imagens
+        function initLazyLoading() {
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('loading-shimmer');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => {
+                img.classList.add('loading-shimmer');
+                imageObserver.observe(img);
+            });
+        }
+
+        // Efeito de parallax no scroll
+        function initParallaxEffect() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax');
+                
+                parallaxElements.forEach(element => {
+                    const speed = element.dataset.speed || 0.5;
+                    const yPos = -(scrolled * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+        }
+
+        // Smooth scroll melhorado
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = target.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Efeito de typing no título
+        function initTypingEffect() {
+            const title = document.querySelector('.section-title');
+            if (title) {
+                title.classList.add('typing-effect');
+                setTimeout(() => {
+                    title.classList.remove('typing-effect');
+                }, 3500);
+            }
+        }
+
+        // Sistema de busca simples
+        function initSearchSystem() {
+            // Criar campo de busca
+            const searchContainer = document.createElement('div');
+            searchContainer.innerHTML = `
+                <div style="margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
+                    <input type="text" id="searchInput" placeholder="Buscar notícias..." 
+                           style="flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border-color); 
+                                  border-radius: 0.5rem; background: var(--bg-card); color: var(--text-primary);
+                                  font-size: 1rem; transition: all 0.3s ease;">
+                    <button onclick="clearSearch()" 
+                            style="padding: 0.75rem 1rem; background: var(--accent-secondary); 
+                                   color: white; border: none; border-radius: 0.5rem; cursor: pointer;
+                                   transition: all 0.3s ease;">Limpar</button>
+                </div>
+            `;
+            
+            const newsSection = document.querySelector('.news-section');
+            newsSection.insertBefore(searchContainer, document.getElementById('newsContainer'));
+            
+            // Funcionalidade de busca
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterNews(searchTerm);
+            });
+        }
+
+        // Função para filtrar notícias
+        function filterNews(searchTerm) {
+            const filteredNews = newsData.filter(news => 
+                news.title.toLowerCase().includes(searchTerm) ||
+                news.summary.toLowerCase().includes(searchTerm)
+            );
+            
+            const newsContainer = document.getElementById('newsContainer');
+            newsContainer.innerHTML = '';
+            
+            if (filteredNews.length === 0) {
+                newsContainer.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <h3>Nenhuma notícia encontrada</h3>
+                        <p>Tente buscar por outros termos.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredNews.forEach((news, index) => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card fade-in';
+                newsCard.style.animationDelay = `${index * 0.1}s`;
+                
+                newsCard.innerHTML = `
+                    <img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.style.display='none'">
+                    <div class="news-content">
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-summary">${convertUrlsToLinks(news.summary)}</p>
+                        <span class="news-date">${news.date}</span>
+                    </div>
+                `;
+                
+                newsContainer.appendChild(newsCard);
+            });
+            
+            // Reativar observer para novos elementos
+            const newFadeElements = newsContainer.querySelectorAll('.fade-in');
+            newFadeElements.forEach(el => observer.observe(el));
+        }
+
+        // Função para limpar busca
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            loadNews();
+        }
+
+        // Contador de visualizações (simulado)
+        function initViewCounter() {
+            let views = localStorage.getItem('siteViews') || 0;
+            views++;
+            localStorage.setItem('siteViews', views);
+            
+            // Adicionar contador no rodapé
+            const footerText = document.querySelector('.footer-text');
+            footerText.innerHTML += `<br><small>Visualizações: ${views}</small>`;
+        }
+
+        // Sistema de notificações toast
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 0.5rem;
+                box-shadow: var(--shadow-medium);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease;
+                max-width: 300px;
+            `;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Adicionar animação para toast
+        const toastStyles = document.createElement('style');
+        toastStyles.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(toastStyles);
+
+        /*
+        ===== INSTRUÇÕES PARA EDIÇÃO =====
+        
+        Para adicionar uma nova notícia:
+        1. Use a função addNews("Título", "Resumo com possíveis URLs", "URL_da_imagem", "Data")
+        2. Ou edite diretamente o array newsData no início do script
+        
+        Para remover uma notícia:
+        1. Use a função removeNews(ID_da_notícia)
+        2. Ou remova o objeto correspondente do array newsData
+        
+        Para adicionar um novo anúncio:
+        1. Use a função addAd("Título", "Texto do anúncio", "URL_da_imagem", "URL_do_link")
+        2. Ou edite diretamente o array adsData no início do script
+        
+        Para remover um anúncio:
+        1. Use a função removeAd(ID_do_anúncio)
+        2. Ou remova o objeto correspondente do array adsData
+        
+        Para personalizar cores e estilos:
+        1. Edite as variáveis CSS no início do arquivo (seção :root)
+        2. Modifique as classes CSS conforme necessário
+        
+        Exemplos de uso no console do navegador:
+        addNews("Nova Notícia", "Texto da notícia com link https://exemplo.com", "https://imagem.jpg", "20 de Janeiro, 2024");
+        addAd("Novo Comerciante", "Descrição do negócio", "https://banner.jpg", "https://site.com");
+        */
+    </script>
+</body>
+</html>
+
