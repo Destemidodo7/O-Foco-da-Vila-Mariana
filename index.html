@@ -176,9 +176,9 @@
 
         .news-image {
             width: 100%;
-            height: 500px;
-            object-fit: cover;
-            background: var(--accent-secondary);
+            aspect-ratio: 16 / 9; /* Mantém proporção padrão de vídeo/imagem */
+            object-fit: cover; /* Preenche mantendo proporção */
+            display: block;
         }
 
         .news-content {
@@ -536,7 +536,8 @@
             </div>
             <p class="footer-text">
                 © 2024 O Foco da Vila Mariana e Região. Todos os direitos reservados.<br>
-                Informando a comunidade da Vila Mariana, Aclimação e Vila Monumento.
+                Informando a comunidade da Vila Mariana, Aclimação e Vila Monumento.<br>
+                Criado por <a href="https://luizdoautozapp.com.br" target="_blank">luizdoautozapp.com.br</a>
             </p>
         </div>
     </footer>
@@ -602,7 +603,7 @@
             {
                 id: 4,
                 title: "Sky Pizza",
-                text: "A melhor pizza da região.",
+                text: "A melhor pizzaria da região.",
                 image: "logosky.webp",
                 link: "https://skypizza.com.br"
 }
