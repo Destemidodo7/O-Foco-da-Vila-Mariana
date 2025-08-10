@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - O Foco da Vila Mariana e Região</title>
+    <style>
+        /* ===== VARIÁVEIS CSS PARA TEMAS ===== */
+        :root {
+            /* Tema Claro */
+            --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.9);
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --accent-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --border-color: rgba(148, 163, 184, 0.3);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Tema Escuro */
+        [data-theme="dark"] {
+            --bg-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --bg-secondary: rgba(15, 23, 42, 0.9);
+            --bg-card: rgba(30, 41, 59, 0.95);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --accent-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --border-color: rgba(71, 85, 105, 0.3);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== RESET E BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== CABEÇALHO FIXO ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-primary);
+            background: var(--bg-card);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            background: var(--accent-primary);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        .main-content {
+            margin-top: 100px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        /* ===== SEÇÃO DE CONTATO ===== */
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-info {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-button {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== SIDEBAR COM ANÚNCIOS ===== */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .ads-section {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .ads-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ad-banner {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .ad-banner:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: var(--accent-primary);
+        }
+
+        .ad-text {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ===== RODAPÉ ===== */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: 2rem;
+                margin-top: 140px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                font-size: 0.875rem;
+            }
+
+            .nav-link {
+                padding: 0.25rem 0.5rem;
+            }
+
+            .theme-toggle {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.875rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-info, .contact-form {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* ===== ÍCONE FLUTUANTE WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO FIXO -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">O Foco da Vila Mariana</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Notícias</a></li>
+                    <li><a href="esporte.html" class="nav-link">Esportes</a></li>
+                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
+                    <li><a href="comerciantes.html" class="nav-link">Comerciantes</a></li>
+                    <li><a href="contato.html" class="nav-link active">Contato</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()">🌙 Tema</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        <!-- SEÇÃO DE CONTATO -->
+        <section class="contact-section">
+            <h1 class="section-title">Entre em Contato</h1>
+            <div style="margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
+                <input type="text" id="searchInput" placeholder="Buscar informações de contato..." 
+                       style="flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border-color); 
+                              border-radius: 0.5rem; background: var(--bg-card); color: var(--text-primary);
+                              font-size: 1rem; transition: all 0.3s ease;">
+                <button onclick="clearSearch()" 
+                        style="padding: 0.75rem 1rem; background: var(--accent-secondary); 
+                               color: white; border: none; border-radius: 0.5rem; cursor: pointer;
+                               transition: all 0.3s ease;">Limpar</button>
+            </div>
+            
+            <!-- INFORMAÇÕES DE CONTATO -->
+            <div class="contact-info">
+                <h3>Nossos Contatos</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <strong>WhatsApp</strong><br>
+                        <a href="https://wa.me/5511961403630" target="_blank" style="color: var(--text-primary); text-decoration: none;">(11) 96140-3630</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>E-mail</strong><br>
+                        <a href="mailto:vendas@luizdowhatsapp.com.br" style="color: var(--text-primary); text-decoration: none;">vendas@luizdowhatsapp.com.br</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>Região de Atendimento</strong><br>
+                        Vila Mariana, Aclimação e Vila Monumento
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULÁRIO DE CONTATO -->
+            <div class="contact-form">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700; background: var(--accent-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Envie sua Mensagem</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nome Completo *</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">E-mail *</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Telefone/WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Assunto *</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Mensagem *</label>
+                        <textarea id="message" name="message" class="form-textarea" required placeholder="Digite sua mensagem aqui..."></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Enviar via WhatsApp</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SIDEBAR COM ANÚNCIOS -->
+        <aside class="sidebar">
+            <div class="ads-section">
+                <h2 class="ads-title">Comerciantes da Região</h2>
+                <div id="adsContainer">
+                    <!-- Anúncios serão carregados dinamicamente via JavaScript -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- ÍCONE FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5511961403630" class="whatsapp-float" target="_blank">
+        <span>💬</span>
+    </a>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h3 class="footer-title">O Foco da Vila Mariana e Região</h3>
+            <div class="social-links">
+                <a href="#" class="social-link">FB</a>
+                <a href="#" class="social-link">IG</a>
+                <a href="#" class="social-link">TW</a>
+                <a href="https://wa.me/5511961403630" class="social-link">WA</a>
+            </div>
+            <p class="footer-text">
+                © 2024 O Foco da Vila Mariana e Região. Todos os direitos reservados.<br>
+                Informando a comunidade da Vila Mariana, Aclimação e Vila Monumento.<br>
+                Criado por <a href="https://luizdoautozapp.com.br" target="_blank">luizdoautozapp.com.br</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Array de anúncios
+        const adsData = [
+            {
+                id: 1,
+                title: "Luiz do AutoZapp",
+                text: "Automação WhatsApp",
+                image: "images/logoluizdoautozapp.jpg",
+                link: "https://luizdoautozapp.com.br"
+            },
+            {
+                id: 2,
+                title: "Sky Pizza",
+                text: "A melhor pizza da região",
+                image: "images/logosky.webp",
+                link: "#"
+            },
+            {
+                id: 3,
+                title: "Projeto Quixote",
+                text: "Educação e Cultura",
+                image: "images/quixote.png",
+                link: "#"
+            }
+        ];
+
+        // ===== FUNÇÕES =====
+        function loadAds() {
+            const container = document.getElementById('adsContainer');
+            container.innerHTML = '';
+
+            adsData.forEach(ad => {
+                const adElement = document.createElement('a');
+                adElement.href = ad.link;
+                adElement.className = 'ad-banner';
+                adElement.target = '_blank';
+                adElement.innerHTML = `
+                    <img src="${ad.image}" alt="${ad.title}" class="ad-image">
+                    <div class="ad-text">${ad.text}</div>
+                `;
+                container.appendChild(adElement);
+            });
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        function sendToWhatsApp(formData) {
+            const phoneNumber = '5511961403630';
+            const message = `*Nova mensagem do site O Foco da Vila Mariana*
+
+*Nome:* ${formData.name}
+*E-mail:* ${formData.email}
+*Telefone:* ${formData.phone || 'Não informado'}
+*Assunto:* ${formData.subject}
+
+*Mensagem:*
+${formData.message}
+
+---
+Enviado através do formulário de contato do site.`;
+
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Função para filtrar informações de contato
+        function filterContactInfo(searchTerm) {
+            const contactItems = document.querySelectorAll('.contact-item');
+            let hasVisibleItems = false;
+            
+            contactItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                    hasVisibleItems = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Mostrar/ocultar seções baseado na busca
+            const contactInfo = document.querySelector('.contact-info');
+            const contactForm = document.querySelector('.contact-form');
+            
+            if (searchTerm === '') {
+                contactInfo.style.display = 'block';
+                contactForm.style.display = 'block';
+            } else {
+                contactInfo.style.display = hasVisibleItems ? 'block' : 'none';
+                contactForm.style.display = 'block'; // Sempre mostrar o formulário
+            }
+        }
+
+        // Função para limpar busca
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            filterContactInfo('');
+        }
+
+        // ===== EVENTOS =====
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Validação básica
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            // Enviar para WhatsApp
+            sendToWhatsApp(formData);
+            
+            // Limpar formulário
+            this.reset();
+            
+            // Feedback para o usuário
+            alert('Redirecionando para o WhatsApp...');
+        });
+
+        // ===== INICIALIZAÇÃO =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar tema salvo
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+
+            // Carregar anúncios
+            loadAds();
+
+            // Funcionalidade de busca
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterContactInfo(searchTerm);
+            });
+        });
+    </script>
+</body>
+</html>
+

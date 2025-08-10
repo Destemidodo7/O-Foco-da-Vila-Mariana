@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esportes - O Foco da Vila Mariana e Região</title>
+    <style>
+        /* ===== VARIÁVEIS CSS PARA TEMAS ===== */
+        :root {
+            /* Tema Claro */
+            --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.9);
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --accent-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --border-color: rgba(148, 163, 184, 0.3);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Tema Escuro */
+        [data-theme="dark"] {
+            --bg-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --bg-secondary: rgba(15, 23, 42, 0.9);
+            --bg-card: rgba(30, 41, 59, 0.95);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --accent-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --border-color: rgba(71, 85, 105, 0.3);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== RESET E BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== CABEÇALHO FIXO ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-primary);
+            background: var(--bg-card);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            background: var(--accent-primary);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        .main-content {
+            margin-top: 100px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        /* ===== SEÇÃO DE NOTÍCIAS ===== */
+        .news-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .news-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .news-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .news-summary {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .news-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ===== SIDEBAR COM ANÚNCIOS ===== */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .ads-section {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .ads-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ad-banner {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .ad-banner:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: var(--accent-primary);
+        }
+
+        .ad-text {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ===== RODAPÉ ===== */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: 2rem;
+                margin-top: 140px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                font-size: 0.875rem;
+            }
+
+            .nav-link {
+                padding: 0.25rem 0.5rem;
+            }
+
+            .theme-toggle {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .news-card:hover::before {
+            opacity: 1;
+        }
+
+        /* ===== ÍCONE FLUTUANTE WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO FIXO -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">O Foco da Vila Mariana</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Notícias</a></li>
+                    <li><a href="esporte.html" class="nav-link active">Esportes</a></li>
+                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
+                    <li><a href="comerciantes.html" class="nav-link">Comerciantes</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()">🌙 Tema</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        <!-- SEÇÃO DE ESPORTES -->
+        <section class="news-section">
+            <h1 class="section-title">Esportes da Região</h1>
+            <div style="margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
+                <input type="text" id="searchInput" placeholder="Buscar notícias esportivas..." 
+                       style="flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border-color); 
+                              border-radius: 0.5rem; background: var(--bg-card); color: var(--text-primary);
+                              font-size: 1rem; transition: all 0.3s ease;">
+                <button onclick="clearSearch()" 
+                        style="padding: 0.75rem 1rem; background: var(--accent-secondary); 
+                               color: white; border: none; border-radius: 0.5rem; cursor: pointer;
+                               transition: all 0.3s ease;">Limpar</button>
+            </div>
+            <div class="news-grid" id="sportsContainer">
+                <!-- Notícias de esporte serão carregadas dinamicamente via JavaScript -->
+            </div>
+        </section>
+
+        <!-- SIDEBAR COM ANÚNCIOS -->
+        <aside class="sidebar">
+            <div class="ads-section">
+                <h2 class="ads-title">Comerciantes da Região</h2>
+                <div id="adsContainer">
+                    <!-- Anúncios serão carregados dinamicamente via JavaScript -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- ÍCONE FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5511961403630" class="whatsapp-float" target="_blank">
+        <span>💬</span>
+    </a>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h3 class="footer-title">O Foco da Vila Mariana e Região</h3>
+            <div class="social-links">
+                <a href="#" class="social-link">FB</a>
+                <a href="#" class="social-link">IG</a>
+                <a href="#" class="social-link">TW</a>
+                <a href="https://wa.me/5511961403630" class="social-link">WA</a>
+            </div>
+            <p class="footer-text">
+                © 2024 O Foco da Vila Mariana e Região. Todos os direitos reservados.<br>
+                Informando a comunidade da Vila Mariana, Aclimação e Vila Monumento.<br>
+                Criado por <a href="https://luizdoautozapp.com.br" target="_blank">luizdoautozapp.com.br</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DADOS DE ESPORTES =====
+        const sportsData = [
+            {
+                id: 1,
+                title: "Campeonato de Futebol da Vila Mariana 2024",
+                summary: "O tradicional campeonato de futebol da Vila Mariana está com inscrições abertas! Participe desta competição que reúne os melhores times da região. Inscrições até 30 de dezembro no Centro Esportivo da Vila Mariana.",
+                image: "images/pqaclimacao.jpg",
+                date: "15 de dezembro de 2024"
+            },
+            {
+                id: 2,
+                title: "Corrida da Aclimação - Edição 2025",
+                summary: "A tradicional Corrida da Aclimação acontecerá no primeiro domingo de janeiro. O percurso passa pelos principais pontos turísticos da região, incluindo o Parque da Aclimação. Inscrições abertas no site oficial.",
+                image: "images/pqaclimacao.jpg",
+                date: "20 de dezembro de 2024"
+            },
+            {
+                id: 3,
+                title: "Academia ao Ar Livre no Parque da Aclimação",
+                summary: "Novas atividades físicas gratuitas no Parque da Aclimação! Aulas de yoga, pilates e funcional todas as manhãs. Venha cuidar da sua saúde em um ambiente natural e acolhedor.",
+                image: "images/pqaclimacao.jpg",
+                date: "18 de dezembro de 2024"
+            },
+            {
+                id: 4,
+                title: "Torneio de Tênis do Clube Vila Mariana",
+                summary: "O Clube Vila Mariana promove torneio de tênis para todas as idades. Categorias infantil, juvenil, adulto e master. Premiação para os três primeiros colocados de cada categoria.",
+                image: "images/pqaclimacao.jpg",
+                date: "16 de dezembro de 2024"
+            }
+        ];
+
+        // Array de anúncios
+        const adsData = [
+            {
+                id: 1,
+                title: "Luiz do AutoZapp",
+                text: "Automação WhatsApp",
+                image: "images/logoluizdoautozapp.jpg",
+                link: "https://luizdoautozapp.com.br"
+            },
+            {
+                id: 2,
+                title: "Sky Pizza",
+                text: "A melhor pizza da região",
+                image: "images/logosky.webp",
+                link: "#"
+            },
+            {
+                id: 3,
+                title: "Projeto Quixote",
+                text: "Educação e Cultura",
+                image: "images/quixote.png",
+                link: "#"
+            }
+        ];
+
+        // ===== FUNÇÕES =====
+        function loadSports() {
+            const container = document.getElementById('sportsContainer');
+            container.innerHTML = '';
+
+            sportsData.forEach(sport => {
+                const sportCard = document.createElement('div');
+                sportCard.className = 'news-card';
+                sportCard.innerHTML = `
+                    <img src="${sport.image}" alt="${sport.title}" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">${sport.title}</h3>
+                        <p class="news-summary">${sport.summary}</p>
+                        <span class="news-date">${sport.date}</span>
+                    </div>
+                `;
+                container.appendChild(sportCard);
+            });
+        }
+
+        function loadAds() {
+            const container = document.getElementById('adsContainer');
+            container.innerHTML = '';
+
+            adsData.forEach(ad => {
+                const adElement = document.createElement('a');
+                adElement.href = ad.link;
+                adElement.className = 'ad-banner';
+                adElement.target = '_blank';
+                adElement.innerHTML = `
+                    <img src="${ad.image}" alt="${ad.title}" class="ad-image">
+                    <div class="ad-text">${ad.text}</div>
+                `;
+                container.appendChild(adElement);
+            });
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Função para filtrar notícias esportivas
+        function filterSports(searchTerm) {
+            const filteredSports = sportsData.filter(sport => 
+                sport.title.toLowerCase().includes(searchTerm) ||
+                sport.summary.toLowerCase().includes(searchTerm)
+            );
+            
+            const container = document.getElementById('sportsContainer');
+            container.innerHTML = '';
+            
+            if (filteredSports.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <h3>Nenhuma notícia esportiva encontrada</h3>
+                        <p>Tente buscar por outros termos.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredSports.forEach(sport => {
+                const sportCard = document.createElement('div');
+                sportCard.className = 'news-card';
+                sportCard.innerHTML = `
+                    <img src="${sport.image}" alt="${sport.title}" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">${sport.title}</h3>
+                        <p class="news-summary">${sport.summary}</p>
+                        <span class="news-date">${sport.date}</span>
+                    </div>
+                `;
+                container.appendChild(sportCard);
+            });
+        }
+
+        // Função para limpar busca
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            loadSports();
+        }
+
+        // ===== INICIALIZAÇÃO =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar tema salvo
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+
+            // Carregar conteúdo
+            loadSports();
+            loadAds();
+
+            // Funcionalidade de busca
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterSports(searchTerm);
+            });
+        });
+    </script>
+</body>
+</html>
+
