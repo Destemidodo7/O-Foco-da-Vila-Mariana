@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agosto Lilás - Reportagem Completa</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    /* Anúncios laterais */
+    .ads {
+      width: 18%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0; /* ajuda a evitar expansão inesperada */
+    }
+
+    .ad {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .ad:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .ad a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .ad img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      max-height: 180px; /* limite máximo para altura para evitar distorção */
+      height: auto;
+    }
+
+    .ad .text {
+      padding: 8px 12px;
+      font-size: 14px;
+      color: #444;
+      min-height: 48px;
+    }
+
+    /* Conteúdo principal */
+    .content {
+      flex-grow: 1;
+      max-width: 800px;
+      background: white;
+      padding: 20px 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    .content img.hero {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
+      max-height: 450px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #800080;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      margin-top: 35px;
+      margin-bottom: 15px;
+      color: #8B008B;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    p, li {
+      font-size: 1.05rem;
+      margin-top: 15px;
+      text-align: justify;
+      color: #222;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-top: 10px;
+      list-style: disc;
+    }
+
+    a.back-button {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 0;
+      background-color: #8B008B;
+      color: white;
+      padding: 12px 30px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(139,0,139,0.4);
+    }
+
+    a.back-button:hover {
+      background-color: #5e005e;
+      box-shadow: 0 6px 12px rgba(94,0,94,0.6);
+    }
+
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+      }
+
+      .ads {
+        display: none;
+      }
+
+      .content {
+        max-width: 100%;
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Anúncios à esquerda -->
+    <div class="ads">
+      <div class="ad">
+        <a href="https://www.luizdoautozapp.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="images/logoluizdoautozapp.jpg" alt="Anúncio Luiz do Autozapp" />
+          <div class="text">www.luizdoautozapp.com.br</div>
+        </a>
+      </div>
+      <div class="ad">
+        <a href="https://www.seusitepsicologos.com" target="_blank" rel="noopener noreferrer">
+          <img src="anuncio2.webp" alt="Anúncio Psicólogos" />
+          <div class="text">Psicólogos especializados em violência doméstica. Atendimento gratuito.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <main class="content" role="main">
+      <img src="Agostolilas.webp" alt="Agosto Lilás" class="hero" />
+
+      <h1>Agosto Lilás: O mês de combate à violência contra a mulher e a importância da rede de apoio</h1>
+
+      <p>O mês de agosto carrega um importante significado para a sociedade brasileira. Conhecido como <strong>Agosto Lilás</strong>, este período é marcado por ações de <strong>conscientização e enfrentamento à violência contra a mulher</strong>, uma iniciativa que reforça a necessidade urgente de combater os altos índices de agressões sofridas por mulheres em todo o país.</p>
+
+      <p>A campanha surgiu como forma de destacar a data de sanção da <strong>Lei Maria da Penha (Lei nº 11.340/2006)</strong>, aprovada no dia 7 de agosto de 2006, considerada um marco legal no combate à violência doméstica e familiar no Brasil. Desde então, agosto se transformou em um mês de mobilização nacional, com o objetivo de informar a população, incentivar denúncias e promover uma cultura de respeito e equidade.</p>
+
+      <h2>🌐 Uma campanha de alcance nacional</h2>
+
+      <p>Durante o Agosto Lilás, diversas ações são promovidas por órgãos públicos, ONGs, escolas, empresas e meios de comunicação. O foco é <strong>educar a sociedade sobre os diferentes tipos de violência</strong> — que vão além da agressão física — e estimular a denúncia por parte das vítimas ou de quem testemunha abusos.</p>
+
+      <p>As formas de violência mais comuns incluem:</p>
+      <ul>
+        <li><strong>Violência física:</strong> agressões como tapas, socos, empurrões, estrangulamentos e queimaduras;</li>
+        <li><strong>Violência psicológica:</strong> ameaças, manipulação, isolamento e humilhações constantes;</li>
+        <li><strong>Violência moral:</strong> calúnias, difamações e xingamentos;</li>
+        <li><strong>Violência patrimonial:</strong> retenção de documentos, destruição de bens ou controle financeiro da vítima;</li>
+        <li><strong>Violência sexual:</strong> estupro, coerção sexual e práticas forçadas sem consentimento.</li>
+      </ul>
+
+      <h2>📞 Canais de denúncia e apoio</h2>
+
+      <p>Um dos principais objetivos da campanha é <strong>informar as mulheres sobre seus direitos</strong> e mostrar que elas não estão sozinhas. Para isso, há canais específicos e sigilosos disponíveis:</p>
+      <ul>
+        <li><strong>Central de Atendimento à Mulher – Ligue 180</strong> (funciona 24 horas por dia, inclusive feriados);</li>
+        <li><strong>Aplicativo Direitos Humanos Brasil</strong>, para denúncias rápidas via celular;</li>
+        <li><strong>Ouvidoria Nacional de Direitos Humanos</strong>, que recebe denúncias e encaminha aos órgãos competentes.</li>
+      </ul>
+
+      <p>Além desses canais, as mulheres também podem buscar ajuda em <strong>Delegacias da Mulher (DEAMs), CRAS, CREAS, Centros de Referência de Atendimento à Mulher</strong>, entre outros.</p>
+
+      <h2>🤝 O papel da assistência social</h2>
+
+      <p>A atuação da assistência social é essencial para oferecer <strong>suporte integral às vítimas</strong>. Esses serviços colaboram diretamente com as áreas de segurança pública, saúde e justiça, criando uma rede de acolhimento e proteção.</p>
+
+      <p>Entre os atendimentos oferecidos estão:</p>
+      <ul>
+        <li>Apoio psicológico e emocional;</li>
+        <li>Orientação jurídica gratuita;</li>
+        <li>Encaminhamento para casas de acolhimento;</li>
+        <li>Incentivo à autonomia financeira por meio de capacitações e programas sociais.</li>
+      </ul>
+
+      <p>A meta é <strong>romper o ciclo da violência</strong>, garantir segurança às mulheres e promover sua reinserção social.</p>
+
+      <h2>💰 O apoio do FNAS</h2>
+
+      <p>O <strong>Fundo Nacional de Assistência Social (FNAS)</strong> também é protagonista nessa luta. Por meio de repasses financeiros, o fundo apoia projetos que visam:</p>
+      <ul>
+        <li>Fortalecer os serviços especializados de proteção;</li>
+        <li>Financiar ações de prevenção e atendimento;</li>
+        <li>Promover campanhas educativas e de valorização dos direitos humanos.</li>
+      </ul>
+
+      <p>Essa contribuição é estratégica para a manutenção da rede de apoio em todo o país, especialmente em municípios que enfrentam dificuldades para oferecer suporte completo às vítimas.</p>
+
+      <h2>🚺 Por uma sociedade mais justa</h2>
+
+      <p>Mais do que uma campanha de um mês, o <strong>Agosto Lilás</strong> é um lembrete constante de que a violência contra a mulher <strong>não pode ser normalizada</strong>. A denúncia é o primeiro passo para quebrar o ciclo do silêncio e da impunidade. E a informação é uma ferramenta poderosa para transformar realidades.</p>
+
+      <p>O combate à violência exige a união de todos — poder público, sociedade civil e indivíduos — para que as mulheres possam viver com <strong>dignidade, segurança e respeito</strong>.</p>
+
+      <a href="index.html" class="back-button" aria-label="Voltar para o início">← Voltar para o início</a>
+    </main>
+
+    <!-- Anúncios à direita -->
+    <div class="ads">
+      <div class="ad">
+        <a href="https://www.luizdoautozapp.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="images/logoluizdoautozapp.jpg" alt="Anúncio Luiz do Autozapp" />
+          <div class="text">www.luizdoautozapp.com.br</div>
+        </a>
+      </div>
+      <div class="ad">
+        <a href="https://www.projetosocialmulher.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="anuncio4.webp" alt="Projeto social de acolhimento e suporte jurídico" />
+          <div class="text">Projeto social oferece acolhimento e suporte jurídico às vítimas. Saiba mais.</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
