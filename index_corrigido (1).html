@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Foco da Vila Mariana e Região</title>
+    <link rel="icon" type="image/jpeg" href="favicon.png">
+    <style>
+        /* ===== VARIÁVEIS CSS PARA TEMAS ===== */
+        :root {
+            /* Tema Claro */
+            --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.9);
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --accent-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --border-color: rgba(148, 163, 184, 0.3);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Tema Escuro */
+        [data-theme="dark"] {
+            --bg-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --bg-secondary: rgba(15, 23, 42, 0.9);
+            --bg-card: rgba(30, 41, 59, 0.95);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --accent-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --border-color: rgba(71, 85, 105, 0.3);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== RESET E BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== CABEÇALHO FIXO ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: var(--bg-card);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            background: var(--accent-primary);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        .main-content {
+            margin-top: 100px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
+        /* ===== SEÇÃO DE NOTÍCIAS ===== */
+        .news-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== BARRA DE BUSCA ===== */
+        .search-container {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .search-clear-btn {
+            padding: 0.75rem 1rem;
+            background: var(--accent-secondary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .search-clear-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .news-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .news-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .news-summary {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .news-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ===== SIDEBAR COM ANÚNCIOS ===== */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .ads-section {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .ads-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ad-banner {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .ad-banner:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: var(--accent-primary);
+        }
+
+        .ad-text {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ===== RODAPÉ ===== */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: 2rem;
+                margin-top: 140px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                font-size: 0.875rem;
+            }
+
+            .nav-link {
+                padding: 0.25rem 0.5rem;
+            }
+
+            .theme-toggle {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* ===== ANIMAÇÕES AVANÇADAS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .news-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .ad-banner {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        /* ===== LINKS AUTOMÁTICOS ===== */
+        .auto-link {
+            color: #3b82f6;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .auto-link:hover {
+            color: #1d4ed8;
+        }
+
+        /* ===== ÍCONE FLUTUANTE WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+        }
+
+        /* ===== WIDGET DE CLIMA COMPACTO ===== */
+        .weather-widget {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .weather-widget:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .weather-widget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-primary);
+            border-radius: 0.75rem 0.75rem 0 0;
+        }
+
+        .weather-compact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .weather-temp-compact {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .weather-location-compact {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .weather-condition-compact {
+            font-size: 0.8rem;
+            color: var(--text-primary);
+            text-transform: capitalize;
+            margin-bottom: 0.25rem;
+        }
+
+        .weather-icon-compact {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-light);
+            flex-shrink: 0;
+        }
+
+        .weather-loading-compact {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            padding: 1rem 0;
+            font-size: 0.875rem;
+        }
+
+        .weather-error-compact {
+            text-align: center;
+            color: #ef4444;
+            font-weight: 500;
+            padding: 0.75rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            font-size: 0.875rem;
+        }
+
+        .weather-content-compact {
+            display: none;
+        }
+
+        .weather-content-compact.loaded {
+            display: block;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .weather-click-hint {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        /* Tema dia/noite para widget compacto */
+        .weather-widget.day-theme {
+            background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);
+            color: #1e293b;
+        }
+
+        .weather-widget.night-theme {
+            background: linear-gradient(135deg, #263238 0%, #37474f 100%);
+            color: #f1f5f9;
+        }
+
+        .weather-widget.day-theme .weather-temp-compact,
+        .weather-widget.day-theme .weather-condition-compact {
+            color: #1e293b;
+        }
+
+        .weather-widget.night-theme .weather-temp-compact,
+        .weather-widget.night-theme .weather-condition-compact {
+            color: #f1f5f9;
+        }
+
+        /* Responsividade específica do widget compacto */
+        @media (max-width: 480px) {
+            .weather-compact {
+                gap: 0.5rem;
+            }
+
+            .weather-temp-compact {
+                font-size: 1.25rem;
+            }
+
+            .weather-icon-compact {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+
+            .weather-location-compact,
+            .weather-condition-compact {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO FIXO -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">O Foco da Vila Mariana</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Notícias</a></li>
+                    <li><a href="esporte.html" class="nav-link">Esportes</a></li>
+                    <li><a href="vagasdeemprego.html" class="nav-link">Vagas de Emprego</a></li>
+                    <li><a href="comerciantes.html" class="nav-link">Comerciantes</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()">🌙 Tema</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        <!-- SEÇÃO DE NOTÍCIAS -->
+        <section class="news-section" id="noticias">
+            <h1 class="section-title">Últimas Notícias</h1>
+            
+            <!-- BARRA DE BUSCA ÚNICA -->
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar notícias...">
+                <button onclick="clearSearch()" class="search-clear-btn">Limpar</button>
+            </div>
+            
+            <div class="news-grid" id="newsContainer">
+                <!-- Notícias serão carregadas dinamicamente via JavaScript -->
+            </div>
+        </section>
+
+        <!-- SIDEBAR COM ANÚNCIOS -->
+        <aside class="sidebar">
+            <!-- WIDGET DE CLIMA COMPACTO -->
+            <div class="weather-widget" id="weatherWidget" onclick="openWeatherDetails()">
+                <div class="weather-loading-compact" id="weatherLoading">
+                    <span class="weather-loading-spinner"></span>
+                    Carregando clima...
+                </div>
+                
+                <div class="weather-error-compact" id="weatherError" style="display: none;">
+                    ❌ Erro ao carregar clima
+                </div>
+                
+                <div class="weather-content-compact" id="weatherContent">
+                    <div class="weather-compact">
+                        <div class="weather-info">
+                            <div class="weather-temp-compact" id="temperature">--°C</div>
+                            <div class="weather-condition-compact" id="weatherCondition">Carregando...</div>
+                            <div class="weather-location-compact">Vila Mariana, SP</div>
+                        </div>
+                        <div class="weather-icon-compact" id="weatherIcon">🌤️</div>
+                    </div>
+                </div>
+                
+                <div class="weather-click-hint">👆 Clique para detalhes</div>
+            </div>
+
+            <div class="ads-section" id="comerciantes">
+                <h2 class="ads-title">Comerciantes da Região</h2>
+                <div id="adsContainer">
+                    <!-- Anúncios serão carregados dinamicamente via JavaScript -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- ÍCONE FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5511961403630" class="whatsapp-float" target="_blank">
+        <span>💬</span>
+    </a>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h3 class="footer-title">O Foco da Vila Mariana e Região</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61579407714171" class="social-link">FB</a>
+                <a href="https://wa.me/5511961403630" class="social-link">WA</a>
+            </div>
+            <p class="footer-text">
+                © 2024 O Foco da Vila Mariana e Região. Todos os direitos reservados.<br>
+                Informando a comunidade da Vila Mariana, Aclimação e Vila Monumento.<br>
+                Criado por <a href="https://luizdoautozapp.com.br" target="_blank">luizdoautozapp.com.br</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DADOS DE EXEMPLO =====
+        
+        // Array de notícias (fácil de editar)
+        const newsData = [
+            {
+                id: 1,
+                title: "Luiz Do AutoZapp - A automação que sua empresa precisa",
+                summary: "🚀 Luiz do AutoZapp - A Automação Inteligente que Impulsiona seu Negócio!<br>Transforme o WhatsApp da sua empresa em uma máquina de vendas 24h por dia!<br>📲 Deixe suas mensagens no automático e foque no que realmente importa: vender mais.<br>🌐 Quer um site profissional? A gente cria também!<br>👉 Acesse agora: https://luizdoautozapp.com.br",
+                image: "images/logoluizdoautozapp.jpg",
+                link: "https://luizdoautozapp.com.br",
+                date: "💥 Automação poderosa, resultados reais e o melhor custo-benefício do mercado.<br>Sua empresa precisa de automação? Ela precisa do Luiz do AutoZapp!"
+            },
+            {
+                id: 2,
+                title: "Agosto Lilás: O mês de combate à violência contra a mulher e a importância da rede de apoio",
+                summary: "Você sabia que agosto é um mês dedicado à luta contra a violência doméstica? Conheça a campanha Agosto Lilás, entenda os tipos de agressão, saiba onde denunciar e veja como a assistência social atua para proteger mulheres em situação de vulnerabilidade.<br>👉 Leia a reportagem completa! https://o-foco-da-vila-mariana.vercel.app/agostolilas.html",
+                image: "images/Agostolilas.webp",
+                date: "07 de Agosto de 2025."
+            },
+            {
+                id: 3,
+                title: "✨ Fli Sampa 2025: São Paulo respira literatura no coração da cidade",
+                summary: "Por Redação – Jornal O Foco da Vila Mariana e Região<br>São Paulo vai se transformar, por cinco dias, em um imenso palco de histórias, palavras e sonhos. De 19 a 23 de agosto, o público poderá mergulhar em um universo literário vibrante durante a realização do Fli Sampa 2025 – Festival Internacional Literário de São Paulo, que chega à sua segunda edição reunindo autores consagrados, novos talentos e milhares de leitores apaixonados.",
+                image: "images/flisampa.jpg",
+                date: "19 de Agosto de 2025."
+            },  
+            {
+                id: 4,
+                title: "E.E. Oscar Thompson: Educação e Gestão de Excelência no Coração do Cambuci",
+                summary: "A Escola Estadual Oscar Thompson, situada no tradicional bairro do Cambuci, é referência em educação de qualidade e compromisso com a formação cidadã. Sob a liderança dedicada de sua diretoria, a escola mantém um ambiente organizado, acolhedor e motivador para alunos e professores. Com uma equipe pedagógica comprometida, projetos culturais e esportivos que enriquecem o aprendizado e o apoio constante da comunidade, a E.E. Oscar Thompson se consolida como um verdadeiro orgulho do bairro e exemplo de gestão no ensino público paulista.",
+                image: "images/OscarThompson.webp",
+                date: "09 de Agosto de 2025"
+            },
+            {
+                id: 5,
+                title: "Projeto Quixote: acolhimento e transformação na Vila Mariana",
+                summary: "O Projeto Quixote é um exemplo de dedicação e cuidado na Vila Mariana. Com uma gestão comprometida, conta com psicólogos, assistentes sociais e educadores que trabalham juntos para transformar vidas.<br>O carinho também está na cozinha, onde refeições deliciosas e nutritivas são preparadas todos os dias, trazendo aconchego e afeto.<br>Mais do que um espaço de atendimento, o Quixote oferece oficinas culturais, apoio educacional e oportunidades para jovens e famílias. Vale a pena conhecer e apoiar essa iniciativa que é orgulho da nossa região.<br>👉 Acesse agora: https://projetoquixote.org.br",
+                image: "images/quixote.png",
+                date: "06 de Agosto de 2025."
+            },
+            {
+                id: 6,
+                title: "Mais que uma escola: Gomes Cardim é referência em ensino e acolhimento da Vila Mariana, Acrimação, Vila Monumento e região",
+                summary: "A Escola Estadual Professor Gomes Cardim, no Jardim da Glória, é referência em educação pública de qualidade, com infraestrutura completa, gestão comprometida e ensino inclusivo. Atendendo cerca de 475 alunos do Ensino Fundamental, destaca-se pela adesão ao Programa de Ensino Integral e pelo acolhimento à comunidade.<br>https://sites.google.com/view/professorgomescardim",
+                image: "images/gomescardim.jpg",
+                date: "08 de agosto de 2025."
+            },
+            {
+                id: 7,
+                title: "Parque da Aclimação – Natureza e História no Coração de São Paulo",
+                summary: "O Parque da Aclimação, na Rua Muniz de Souza, 1.119, é um dos refúgios verdes mais tradicionais de São Paulo. Inaugurado em 1939 e tombado pelo CONDEPHAAT em 1986, possui 136 mil m² com lago, jardim japonês, pistas de caminhada, playgrounds, aparelhos de ginástica, áreas para piquenique, cachorródromo, wi-fi gratuito e acessibilidade. Criado por Carlos Botelho no início do século XX, o local já foi fazenda de gado leiteiro e abrigou o primeiro zoológico da cidade. Hoje, preserva 111 espécies de animais e 125 tipos de plantas, incluindo pau-brasil e pinheiro-do-paraná. Funcionamento: todos os dias, das 5h às 20h. Telefone: (11) 3208-4042.",
+                image: "images/pqaclimacao.jpg",
+                date: "10 de Agosto de 2025."
+            },
+            {
+                id: 8,
+                title: "Anuncie aqui",
+                summary: "Seja visto pelos clientes da sua região<br>👉 Acesse agora: https://luizdoautozapp.com.br",
+                image: "images/comerciantes/Anuncie_aqui.gif",
+                date: ""
+            }
+        ];
+
+        // Array de anúncios (fácil de editar)
+        const adsData = [
+            {
+                id: 1,
+                title: "Luiz do AutoZapp",
+                text: "🚀 Transforme o WhatsApp da sua empresa em uma máquina de vendas 24h por dia! Automatize mensagens e foque no que realmente importa: vender mais. 🌐 Criamos também sites profissionais sob medida..",
+                image: "images/comerciantes/logoluizdoautozapp.jpg",
+                link: "https://luizdoautozapp.com.br"
+            },
+            {
+                id: 2,
+                title: "McDonald's Vila Mariana",
+                text: "Endereço: Rua Domingos de Moraes, 1954 – Vila Mariana, São Paulo<br>Horário de funcionamento: Aberto 24 horas por dia, todos os dias da semana",
+                image: "images/comerciantes/mcdonalds.webp",
+                link: "#"
+            },
+            {
+                id: 3,
+                title: "Anuncie aqui",
+                text: "Seja visto pelos clientes da sua região.",
+                image: "images/comerciantes/Anuncie_aqui.gif",
+                link: "https://luizdoautozapp.com.br"
+            },
+            {
+                id: 4,
+                title: "🔧 SM Renovadora de Veículos – Sua mecânica de confiança na Vila Mariana e região!",
+                text: "Serviços de qualidade, preço justo e atendimento especializado em carros nacionais e importados.<br>📍 Avenida Lacerda Franco n°2075, Cambuci – Traga seu carro para quem entende!",
+                image: "images/comerciantes/SM.jpg",
+                link: "https://wa.me/551155726285?text=Olá%2C%20vim%20pelo%20anúncio%20no%20jornal%20O%20Foco%20da%20Vila%20Mariana%20e%20gostaria%20de%20mais%20informações"
+            },
+            {
+                id: 5,
+                title: "O Boticário Cambuci",
+                text: "Endereço: Rua do Lavapés, 1000 – Cambuci, São Paulo<br>Horário de funcionamento: Segunda a sábado das 9h às 19h",
+                image: "images/comerciantes/boticario.jpg",
+                link: "#"
+            }
+        ];
+
+        // ===== FUNÇÕES PRINCIPAIS =====
+        
+        // Função para alternar tema
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            const themeButton = document.querySelector('.theme-toggle');
+            themeButton.textContent = newTheme === 'dark' ? '☀️ Tema' : '🌙 Tema';
+        }
+
+        // Função para converter URLs em links clicáveis
+        function convertUrlsToLinks(text) {
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, '<a href="$1" target="_blank" class="auto-link">$1</a>');
+        }
+
+        // Função para carregar notícias
+        function loadNews() {
+            const newsContainer = document.getElementById('newsContainer');
+            newsContainer.innerHTML = '';
+            
+            newsData.forEach((news, index) => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.style.animationDelay = `${index * 0.1}s`;
+                
+                newsCard.innerHTML = `
+                    <img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.style.display='none'">
+                    <div class="news-content">
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-summary">${convertUrlsToLinks(news.summary)}</p>
+                        <span class="news-date">${news.date}</span>
+                    </div>
+                `;
+                
+                newsContainer.appendChild(newsCard);
+            });
+        }
+
+        // Função para carregar anúncios
+        function loadAds() {
+            const adsContainer = document.getElementById('adsContainer');
+            adsContainer.innerHTML = '';
+            
+            adsData.forEach((ad, index) => {
+                const adBanner = document.createElement('a');
+                adBanner.href = ad.link;
+                adBanner.className = 'ad-banner';
+                adBanner.target = '_blank';
+                adBanner.style.animationDelay = `${index * 0.2}s`;
+                
+                adBanner.innerHTML = `
+                    <img src="${ad.image}" alt="${ad.title}" class="ad-image" onerror="this.style.display='none'">
+                    <div class="ad-text">${ad.text}</div>
+                `;
+                
+                adsContainer.appendChild(adBanner);
+            });
+        }
+
+        // Função para filtrar notícias
+        function filterNews(searchTerm) {
+            const filteredNews = newsData.filter(news => 
+                news.title.toLowerCase().includes(searchTerm) ||
+                news.summary.toLowerCase().includes(searchTerm)
+            );
+            
+            const newsContainer = document.getElementById('newsContainer');
+            newsContainer.innerHTML = '';
+            
+            if (filteredNews.length === 0) {
+                newsContainer.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <h3>Nenhuma notícia encontrada</h3>
+                        <p>Tente buscar por outros termos.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredNews.forEach((news, index) => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.style.animationDelay = `${index * 0.1}s`;
+                
+                newsCard.innerHTML = `
+                    <img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.style.display='none'">
+                    <div class="news-content">
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-summary">${convertUrlsToLinks(news.summary)}</p>
+                        <span class="news-date">${news.date}</span>
+                    </div>
+                `;
+                
+                newsContainer.appendChild(newsCard);
+            });
+        }
+
+        // Função para limpar busca
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            loadNews();
+        }
+
+        // Função para abrir detalhes do clima
+        function openWeatherDetails() {
+            window.open('clima-detalhes.html', '_blank');
+        }
+
+        // ===== INICIALIZAÇÃO =====
+        
+        // Carregar tema salvo
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            
+            const themeButton = document.querySelector('.theme-toggle');
+            themeButton.textContent = savedTheme === 'dark' ? '☀️ Tema' : '🌙 Tema';
+            
+            // Carregar conteúdo
+            loadNews();
+            loadAds();
+            
+            // Configurar busca
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterNews(searchTerm);
+            });
+        });
+
+        // ===== WIDGET DE CLIMA - CONFIGURAÇÃO DA API DO OPENWEATHER =====
+        const OPENWEATHER_API_KEY = '09f7ff1eb394de446e8f8b234104eb65'; // SUBSTITUA PELA SUA API KEY
+        const VILA_MARIANA_COORDS = {
+            lat: -23.5934,
+            lon: -46.6358
+        };
+
+        // ===== MAPEAMENTO DE ÍCONES DO CLIMA =====
+        const weatherIcons = {
+            '01d': '☀️', // clear sky day
+            '01n': '🌙', // clear sky night
+            '02d': '⛅', // few clouds day
+            '02n': '☁️', // few clouds night
+            '03d': '☁️', // scattered clouds
+            '03n': '☁️', // scattered clouds
+            '04d': '☁️', // broken clouds
+            '04n': '☁️', // broken clouds
+            '09d': '🌧️', // shower rain
+            '09n': '🌧️', // shower rain
+            '10d': '🌦️', // rain day
+            '10n': '🌧️', // rain night
+            '11d': '⛈️', // thunderstorm
+            '11n': '⛈️', // thunderstorm
+            '13d': '❄️', // snow
+            '13n': '❄️', // snow
+            '50d': '🌫️', // mist
+            '50n': '🌫️'  // mist
+        };
+
+        // ===== FUNÇÕES DO WIDGET DE CLIMA =====
+        
+        // Função para buscar dados do clima
+        async function fetchWeatherData() {
+            try {
+                const response = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?lat=${VILA_MARIANA_COORDS.lat}&lon=${VILA_MARIANA_COORDS.lon}&appid=${OPENWEATHER_API_KEY}&units=metric&lang=pt_br`
+                );
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Erro ao buscar dados do clima:', error);
+                throw error;
+            }
+        }
+
+        // Função para atualizar widget compacto
+        function updateWeatherWidget(data) {
+            const temperature = Math.round(data.main.temp);
+            const condition = data.weather[0].description;
+            const iconCode = data.weather[0].icon;
+            const icon = weatherIcons[iconCode] || '🌤️';
+            
+            // Atualizar elementos
+            document.getElementById('temperature').textContent = `${temperature}°C`;
+            document.getElementById('weatherCondition').textContent = condition;
+            document.getElementById('weatherIcon').textContent = icon;
+            
+            // Aplicar tema baseado no horário (dia/noite)
+            const widget = document.getElementById('weatherWidget');
+            const isDay = iconCode.includes('d');
+            
+            widget.classList.remove('day-theme', 'night-theme');
+            widget.classList.add(isDay ? 'day-theme' : 'night-theme');
+            
+            // Mostrar conteúdo
+            document.getElementById('weatherLoading').style.display = 'none';
+            document.getElementById('weatherError').style.display = 'none';
+            document.getElementById('weatherContent').classList.add('loaded');
+        }
+
+        // Função para mostrar erro no widget
+        function showWeatherError() {
+            document.getElementById('weatherLoading').style.display = 'none';
+            document.getElementById('weatherError').style.display = 'block';
+            document.getElementById('weatherContent').classList.remove('loaded');
+        }
+
+        // Função para inicializar widget de clima
+        async function initWeatherWidget() {
+            try {
+                const weatherData = await fetchWeatherData();
+                updateWeatherWidget(weatherData);
+            } catch (error) {
+                showWeatherError();
+            }
+        }
+
+        // Inicializar widget de clima quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            initWeatherWidget();
+            
+            // Atualizar clima a cada 10 minutos
+            setInterval(initWeatherWidget, 600000);
+        });
+    </script>
+</body>
+</html>
+
