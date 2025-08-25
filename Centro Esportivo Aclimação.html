@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Centro Esportivo Aclimação – Atividades Gratuitas no Parque da Aclimação</title>
+  <meta name="description" content="Descubra o Centro Esportivo Aclimação, dentro do Parque da Aclimação em São Paulo. Aulas gratuitas, ginástica, artes marciais, futebol e muito mais. Veja grade completa, como solicitar carteirinha e como chegar." />
+  <meta name="keywords" content="Centro Esportivo Aclimação, Parque da Aclimação, esportes gratuitos SP, futebol Vila Mariana, atividades gratuitas São Paulo, ginástica grátis Aclimação, quadras públicas SP, lazer gratuito Vila Mariana" />
+  <link rel="icon" type="image/jpeg" href="favicon.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    /* Anúncios laterais */
+    .ads {
+      width: 18%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    .ad {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .ad:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .ad a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .ad img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      max-height: 180px;
+      height: auto;
+    }
+
+    .ad .text {
+      padding: 8px 12px;
+      font-size: 14px;
+      color: #444;
+      min-height: 48px;
+    }
+
+    /* Conteúdo principal */
+    .content {
+      flex-grow: 1;
+      max-width: 800px;
+      background: white;
+      padding: 20px 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    .content img.hero {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
+      max-height: 450px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #800080;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      margin-top: 35px;
+      margin-bottom: 15px;
+      color: #8B008B;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    p, li {
+      font-size: 1.05rem;
+      margin-top: 15px;
+      text-align: justify;
+      color: #222;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-top: 10px;
+      list-style: disc;
+    }
+
+    a.back-button {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 0;
+      background-color: #8B008B;
+      color: white;
+      padding: 12px 30px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(139,0,139,0.4);
+    }
+
+    a.back-button:hover {
+      background-color: #5e005e;
+      box-shadow: 0 6px 12px rgba(94,0,94,0.6);
+    }
+
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+      }
+
+      .ads {
+        display: none;
+      }
+
+      .content {
+        max-width: 100%;
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Anúncios à esquerda -->
+    <div class="ads">
+      <div class="ad">
+        <a href="https://luizdoautozapp.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="images/comerciantes/logoluizdoautozapp.jpg" alt="Anúncio Luiz do AutoZapp" />
+          <div class="text">🚀 Transforme o WhatsApp da sua empresa em uma máquina de vendas 24h por dia! Automatize mensagens e foque no que realmente importa: vender mais. 🌐 Criamos também sites profissionais sob medida.</div>
+        </a>
+      </div>
+      <div class="ad">
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="images/comerciantes/mcdonalds.webp" alt="Anúncio McDonald’s Vila Mariana" />
+          <div class="text">Endereço: Rua Domingos de Moraes, 1954 – Vila Mariana, São Paulo<br>Horário de funcionamento: Aberto 24 horas por dia, todos os dias da semana</div>
+        </a>
+      </div>
+      <div class="ad">
+        <a href="https://luizdoautozapp.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="images/comerciantes/Anuncie_aqui.gif" alt="Anúncio Anuncie aqui" />
+          <div class="text">Seja visto pelos clientes da sua região.</div>
+        </a>
+      </div>
+      <div class="ad">
+        <a href="https://skypizza.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="images/comerciantes/logosky.webp" alt="Anúncio Sky Pizza" />
+          <div class="text">A melhor pizzaria da região.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <main class="content" role="main">
+      <img src="centro-esportivo-aclimacao.webp" alt="Centro Esportivo Aclimação no Parque da Aclimação" class="hero" />
+
+      <h1>Centro Esportivo Aclimação – Atividades Gratuitas no Parque da Aclimação, Vila Mariana</h1>
+
+      <p>Você já visitou o <strong>Parque da Aclimação</strong>, em São Paulo, e percebeu que dentro dele existe um espaço completo com <strong>quadras, campo de futebol e até um estádio histórico</strong>? Estamos falando do <strong>Centro Esportivo Aclimação – Estádio Municipal Jack Marin</strong>, um verdadeiro patrimônio esportivo da cidade e referência em <strong>esportes gratuitos na Vila Mariana</strong>.</p>
+
+      <p>Inaugurado em <strong>1947</strong>, foi o primeiro centro de futebol municipal do Brasil e da América Latina, revelando talentos e marcando gerações. Hoje, além de sua história, se destaca por oferecer <strong>aulas gratuitas, atividades esportivas variadas e um espaço democrático para toda a comunidade</strong>.</p>
+
+      <h2>📅 Grade Semanal de Atividades Gratuitas</h2>
+      <p>O Centro Esportivo Aclimação oferece uma programação diversificada para todas as idades, ideal para quem busca <strong>lazer gratuito em São Paulo</strong>:</p>
+      <ul>
+        <li><strong>Ginástica dançante:</strong> terças, quintas e sábados, das 7h30 às 8h30, no espaço do parque;</li>
+        <li><strong>Projeto Clube Escola:</strong> aulas de futebol de campo e futsal para crianças e adolescentes, com turmas por faixa etária;</li>
+        <li><strong>Atividades extras:</strong> tai chi chuan, kung fu, biodança e práticas recreativas em horários variados.</li>
+      </ul>
+      <p>⚠️ A grade pode ser atualizada conforme a <strong>Secretaria Municipal de Esportes</strong>. O ideal é confirmar presencialmente ou por telefone.</p>
+
+      <h2>📌 Como Fazer a Carteirinha Gratuita</h2>
+      <p>Para utilizar a estrutura e participar das atividades é necessário fazer a <strong>carteirinha gratuita do Centro Esportivo Aclimação</strong>. O processo é simples:</p>
+      <ul>
+        <li>Documentos exigidos: RG, comprovante de residência e duas fotos 3x4;</li>
+        <li>Local: recepção do Centro Esportivo Aclimação;</li>
+        <li>Dica: em alguns casos, a foto pode ser tirada no local. Confirme antes pelo telefone.</li>
+      </ul>
+      <p>📞 Telefone: <strong>(11) 3271-0932</strong><br>📍 Endereço: Rua Muniz de Souza, 1119 – dentro do Parque da Aclimação.</p>
+
+      <h2>🚇 Como Chegar ao Parque da Aclimação</h2>
+      <p>Existem várias opções para chegar ao <strong>Centro Esportivo Aclimação</strong>:</p>
+      <ul>
+        <li><strong>Metrô:</strong> estação Paraíso (Linhas Azul e Verde), a 1,7 km, trajeto de 20 minutos a pé ou ônibus;</li>
+        <li><strong>Ônibus:</strong> diversas linhas passam no entorno do parque;</li>
+        <li><strong>Bicicleta:</strong> o parque possui estacionamento de bikes;</li>
+        <li><strong>Carro ou aplicativo:</strong> coloque no GPS “Parque da Aclimação – Rua Muniz de Souza, 1119”. Há estacionamento no local.</li>
+      </ul>
+
+      <h2>🏆 Conclusão</h2>
+      <p>O <strong>Centro Esportivo Aclimação</strong> vai muito além de um espaço esportivo: é um lugar de <strong>convivência, saúde, lazer gratuito e história</strong>. Com aulas abertas à comunidade, fácil acesso e infraestrutura de qualidade, se tornou um dos pontos mais democráticos para praticar esportes em São Paulo.</p>
+
+      <p>👉 Se você busca uma atividade gratuita para se exercitar, ou deseja inscrever seus filhos em projetos esportivos de qualidade, não deixe de conhecer esse verdadeiro <strong>tesouro escondido dentro do Parque da Aclimação</strong>.</p>
+
+      <a href="index.html" class="back-button" aria-label="Voltar para o início">← Voltar para o início</a>
+    </main>
+
+    <!-- Anúncios à direita -->
+    <div class="ads">
+      <div class="ad">
+        <a href="https://luizdoautozapp.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="images/comerciantes/logoluizdoautozapp.jpg" alt="Anúncio Luiz do AutoZapp" />
+          <div class="text">🚀 Transforme o WhatsApp da sua empresa em uma máquina de vendas 24h por dia! Automatize mensagens e foque no que realmente importa: vender mais. 🌐 Criamos também sites profissionais sob medida.</div>
+        </a>
+      </div>
+      <div class="ad">
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="images/comerciantes/mcdonalds.webp" alt="Anúncio McDonald’s Vila Mariana" />
+          <div class="text">Endereço: Rua Domingos de Moraes, 1954 – Vila Mariana, São Paulo<br>Horário de funcionamento: Aberto 24 horas por dia, todos os dias da semana</div>
+        </a>
+      </div>
+      <div class="ad">
+        <a href="https://luizdoautozapp.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="images/comerciantes/Anuncie_aqui.gif" alt="Anúncio Anuncie aqui" />
+          <div class="text">Seja visto pelos clientes da sua região.</div>
+        </a>
+      </div>
+      <div class="ad">
+        <a href="https://skypizza.com.br" target="_blank" rel="noopener noreferrer">
+          <img src="images/comerciantes/logosky.webp" alt="Anúncio Sky Pizza" />
+          <div class="text">A melhor pizzaria da região.</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
